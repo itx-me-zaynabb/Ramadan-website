@@ -20,7 +20,7 @@ const RamadanQuotes = () => (
     className="w-full flex flex-col items-center py-20 px-4"
   >
     {/* Section Heading */}
-    <h2 className="text-3xl md:text-4xl font-bold text-yellow-400 text-center mb-12 neon-text">
+    <h2 className="text-3xl md:text-4xl font-bold text-yellow-400 text-center mb-13 neon-text">
       Ramadan Quotes
     </h2>
 
