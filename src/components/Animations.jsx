@@ -1,55 +1,46 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const particles = [
-  { emoji: "🌙", colors: ["#FACC15", "#FCD34D"] },
-  { emoji: "✨", colors: ["#F472B6", "#A78BFA"] },
-  { emoji: "⭐", colors: ["#FBBF24", "#F472B6"] },
-];
+const COLORS = ["#FACC15", "#F472B6", "#A78BFA", "#F9A8D4"]; // yellow, pink, purple, soft pink
 
-const Animations = () => {
-  return (
-    <div className="fixed top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-      {[...Array(25)].map((_, i) => {
-        const particle =
-          particles[Math.floor(Math.random() * particles.length)];
-        const size = Math.random() * 24 + 12; // 12px to 36px
-        const delay = Math.random() * 5;
-        const duration = 4 + Math.random() * 4;
+const Animations = () => (
+  <div className="fixed top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+    {[...Array(15)].map((_, i) => {
+      const size = Math.random() * 6 + 4; // 4px to 10px
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const duration = 6 + Math.random() * 4;
+      const color = COLORS[Math.floor(Math.random() * COLORS.length)];
 
-        return (
-          <motion.div
-            key={i}
-            className="absolute"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              fontSize: size,
-              color:
-                particle.colors[
-                  Math.floor(Math.random() * particle.colors.length)
-                ],
-              textShadow: `0 0 ${size / 2}px ${particle.colors[0]}, 0 0 ${size}px ${particle.colors[1]}`,
-            }}
-            animate={{
-              y: [0, -40, 0],
-              x: [0, 20, -20, 0],
-              opacity: [0.3, 1, 0.3],
-              rotate: [0, 180, 360],
-            }}
-            transition={{
-              duration: duration,
-              repeat: Infinity,
-              delay: delay,
-              ease: "easeInOut",
-            }}
-          >
-            {particle.emoji}
-          </motion.div>
-        );
-      })}
-    </div>
-  );
-};
+      return (
+        <motion.div
+          key={i}
+          className="absolute rounded-full"
+          style={{
+            width: size,
+            height: size,
+            left: `${left}%`,
+            top: `${top}%`,
+            background: color,
+            filter: "blur(2px)", // soft glow
+            opacity: 0.6,
+          }}
+          animate={{
+            y: [0, -30, 0], // gentle up-down motion
+            x: [0, 10, -10, 0], // subtle horizontal drift
+            opacity: [0.4, 0.8, 0.4],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{
+            duration: duration,
+            repeat: Infinity,
+            delay: Math.random() * 5,
+            ease: "easeInOut",
+          }}
+        />
+      );
+    })}
+  </div>
+);
 
 export default Animations;
