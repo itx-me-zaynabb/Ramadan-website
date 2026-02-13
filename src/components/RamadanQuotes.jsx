@@ -1,23 +1,31 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+// Import your 4 different images
+import FaithImg from "../assets/quote.jpg";
+import PatienceImg from "../assets/Ramadan-Quotes-03.png";
+import CharityImg from "../assets/Ramadan-Quotes-06-1024x1024.png";
+import ForgivenessImg from "../assets/Ramadan-Quotes-11-1024x1024.png";
+
 const quotes = [
-  { title: "Faith", img: "../assets/quote.jpg" },
-  { title: "Patience", img: "../assets/Ramadan-Quotes-03.png" },
-  { title: "Charity", img: "../assets/Ramadan-Quotes-06-1024x1024.png" },
-  { title: "Forgiveness", img: "../assets/Ramadan-Quotes-11-1024x1024.png" },
+  { title: "Faith", img: FaithImg },
+  { title: "Patience", img: PatienceImg },
+  { title: "Charity", img: CharityImg },
+  { title: "Forgiveness", img: ForgivenessImg },
 ];
 
 const RamadanQuotes = () => (
   <div
     id="RamadanQuotes"
-    className="w-full flex flex-col items-center px-4 py-20"
+    className="w-full flex flex-col items-center py-20 px-4"
   >
-    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400 text-center mb-12 neon-text">
+    {/* Section Heading */}
+    <h2 className="text-3xl md:text-4xl font-bold text-yellow-400 text-center mb-12 neon-text">
       Ramadan Quotes
     </h2>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl">
+    {/* Cards Grid */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-6xl">
       {quotes.map((q, idx) => (
         <motion.div
           key={idx}
